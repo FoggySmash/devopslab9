@@ -1,0 +1,20 @@
+name: tests
+
+on: [push, pull_request]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: checkout code
+      uses: actions/checkout@v4
+    
+    - name: set up python
+      uses: actions/setup-python@v5
+      with:
+        python-version: "3.x"
+    
+    - name: Run tests
+      run: |
+        python -m unittest test_sudoku.py -v # run tests
